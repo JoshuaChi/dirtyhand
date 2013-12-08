@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MUC Chart Room</title>
+
+    <link rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css'>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js'>
+    </script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js'></script>
+    <script src='js/strophe.js'></script>
+    <script src='js/build/when.js'></script>
+    <script src='js/strophe.muc.js'></script>
+    <script src='js/muc.js'></script>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/justified-nav.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="css/ie8-responsive-file-warning.js"></script><![endif]-->
+
+  </head>
+
+  <body>
+
+    <div class="container">
+      <nav class="navbar navbar-default" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Muc Demo</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Login</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+      </nav>
+
+      <ul>
+        <li id='a'>
+        a@multicast.localhost
+        </li>
+        <li id='b'>
+        b@multicast.localhost
+        </li>
+        <li id='c'>
+        c@multicast.localhost
+        </li>
+        <li id='d'>
+        d@multicast.localhost
+        </li>
+      </ul>
+      <div class='toolbar'>
+        <input id='disconnect' type='button' value='disconnect'
+        disabled='disabled'>
+      </div>
+
+    <!-- login dialog -->
+    <div id='login_dialog'>
+        <form class="form-signin" role="form">
+          <h2 class="form-signin-heading">Please sign in</h2>
+          <input type="text" class="form-control" id='jid' placeholder="Email address" required autofocus>
+          <input type="password" class="form-control" placeholder="Password" required id='password'>
+        </form>
+      </div>
+
+      <!-- Site footer -->
+      <div class="footer">
+        <p>&copy; Company 2013</p>
+      </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>
