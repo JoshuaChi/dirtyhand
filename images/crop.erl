@@ -3,7 +3,7 @@
 % @author: Joshua Chi
 %------------------------------------------------------------
 -module(crop).
--export([do/0, start/0, so/0, fac/2, start2/0]).
+-export([do/0, start/0, so/0, fac/2, start2/0, concr/1]).
 
 fac(N, _V) when N == 0 -> 
   finished;
@@ -40,11 +40,17 @@ so() ->
     {<<"garbage_collections">>, Gc}] = statistics:get_memory_statistics(),
   io:format("#~p#: total: ~p~nprocesses:~p~nprocesses_used:~p~ngarbage_collections:~p~n~n", [time(), T/1024,P/1024,Pu/1024,Gc/1024]).
 
+concr(N) when N==0 ->
+  finished;
+concr(N) when N > 0 ->
+  spawn(crop, start2, []),
+  concr(N-1).
+
 start2() ->
   V = {crop, "/Users/jchi/Downloads/MB1.JPG", "/Users/jchi/Downloads/crop.jpg", 100, 100, 0 ,0},
-  fac(1000, V),
-  timer:sleep(5000),
-  fac(10000, V).
+  fac(100, V),
+  %timer:sleep(1000),
+  fac(1000, V).
   
 start()->
   Crop_Pid = spawn(crop, do, []),
