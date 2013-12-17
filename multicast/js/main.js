@@ -1,22 +1,22 @@
 MultiCast = {
   connection: null,
   _onMessage: function(msg) {
-              console.log(msg);
+              console.log(msg);//{type:multicast, user:110, status:available, pool:pool1}
               var elements = msg.getElementsByTagName('body');
               if (0 < elements.length) {
                 var data = elements[0].text || elements[0].textContent;
-                ary = data.split('#');
-                if (0 < ary.length) {
-                  if ('multicast' == ary[0]){
-                    if('available' == ary[2]){
-                      console.log(ary[1]+"available");
-                      $('#fav_'+ary[1]+ ' > span').removeClass('disabled').removeClass('offline').addClass('online');
-                    }else{
-                      console.log(ary[1]+"unavailable");
-                      $('#fav_'+ary[1]+ ' > span').removeClass('online').removeClass('disabled').addClass('offline');
-                    }                    
+                data = jQuery.parseJSON(data);
+  
+                if ('multicast' == data.type){
+                  if('available' == data.status){
+                    console.log(data.user+"available");
+                    $('#fav_'+data.user+ ' > span').removeClass('disabled').removeClass('offline').addClass('online');
+                  }else{
+                    console.log(data.user+"unavailable");
+                    $('#fav_'+data.user+ ' > span').removeClass('online').removeClass('disabled').addClass('offline');
                   }
                 }
+
               }
               // We must return true to keep the handler alive.
               // Returning false would remove it after it finishes.
