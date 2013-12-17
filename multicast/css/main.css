@@ -1,0 +1,12 @@
+li span.disabled, li span.offline{
+  background:url('../images/offline.png') no-repeat;
+  display: inline-block;
+  width: 15px;
+  margin-right:5px;
+}
+li span.online{
+  background:url('../images/visible.png') no-repeat;
+  display: inline-block;
+  width: 15px;
+  margin-right:5px;
+}

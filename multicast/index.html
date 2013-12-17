@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>MultiCast - Toggle Online disabled</title>
+    <link rel='stylesheet' href='//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css'>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href='css/main.css'>
+  </head>
+  <body>
+<!-- Wrap all page content here -->
+<div id="wrap">
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Fav Online Demo</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li class="disabled"><a id='disconnect'>disconnect</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+<!-- Begin page content -->
+<div class="container">
+  <div class="page-header">
+    <h1>My fav list:</h1>
+  </div>
+  
+  <p style='color:gray;'>
+   Prepares:
+   <pre>
+     $ telnet 127.0.0.1 11211
+     set a 0 3600 38
+     symfony/user/sfUser/authenticated\|b:1
+     ---
+     $ redis-cli -p 6381
+     $ sadd pool1-1 999
+     ...
+     $ sadd pool1-11 999
+   </pre>
+   <pre>
+     User "999" has those favs(1, ...,11). So if we login with escort@domain, when 1, ..., 11 is online, we should see the online icon beside them.[all pwd is "a"]
+   </pre>
+  </p>
+  <h3 id='iam'></h3>
+  <ul>
+    <li id='fav_1'>
+      <span width='5px' class='disabled'>&nbsp;&nbsp;</span><b>User-1</b>
+    </li>
+    <li id='fav_2'>
+      <span width='5px' class='disabled'>&nbsp;&nbsp;</span><b>User-2</b>
+    </li>
+    <li id='fav_3'>
+      <span width='5px' class='disabled'>&nbsp;&nbsp;</span><b>User-3</b>
+    </li>
+    <li id='fav_4'>
+    <span width='5px' class='disabled'>&nbsp;&nbsp;</span><b>User-4</b>
+    </li>
+    <li id='fav_5'>
+    <span width='5px' class='disabled'>&nbsp;&nbsp;</span><b>User-5</b>
+    </li>
+    <li id='fav_6'>
+    <span width='5px' class='disabled'>&nbsp;&nbsp;</span><b>User-6</b>
+    </li>
+    <li id='fav_7'>
+    <span width='5px' class='disabled'>&nbsp;&nbsp;</span><b>User-7</b>
+    </li>
+    <li id='fav_8'>
+    <span width='5px' class='disabled'>&nbsp;&nbsp;</span><b>User-8</b>
+    </li>
+    <li id='fav_9'>
+    <span width='5px' class='disabled'>&nbsp;&nbsp;</span><b>User-9</b>
+    </li>
+    <li id='fav_10'>
+    <span width='5px' class='disabled'>&nbsp;&nbsp;</span><b>User-10</b>
+    </li>
+    <li id='fav_11'>
+    <span width='5px' class='disabled'>&nbsp;&nbsp;</span><b>User-11</b>
+    </li>
+  </ul>
+  </div>
+</div>
+
+<div id="footer">
+  <div class="container">
+    <p class="text-muted">- from service team.</p>
+  </div>
+</div>
+    
+<!-- login dialog -->
+<div id='login_dialog'>
+  <form role="form" class="form-signin">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <input type="text" autofocus="" required="" placeholder="JID address" class="form-control"  id='jid'>
+    <input type="password" required="" placeholder="Password" class="form-control"  id='password'>
+  </form>
+</div>
+
+
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<!--script src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js'></script-->
+<script src='//code.jquery.com/ui/1.10.3/jquery-ui.js'></script>
+<script src="js/bootstrap.min.js"></script>
+<script src='js/strophe.js'></script>
+<script src='js/main.js'></script>
+</body>
+</html>
