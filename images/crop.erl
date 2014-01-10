@@ -48,9 +48,9 @@ concr(N) when N > 0 ->
 
 start2() ->
   V = {crop, "/Users/jchi/Downloads/MB1.JPG", "/Users/jchi/Downloads/crop.jpg", 100, 100, 0 ,0},
-  fac(100, V),
+  fac(1, V).
   %timer:sleep(1000),
-  fac(1000, V).
+  %fac(1000, V).
   
 start()->
   Crop_Pid = spawn(crop, do, []),

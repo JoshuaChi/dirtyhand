@@ -7,13 +7,13 @@ MultiCast = {
                 var data = elements[0].text || elements[0].textContent;
                 data = jQuery.parseJSON(data);
   
-                if ('multicast' == data.type){
-                  if('available' == data.status){
-                    console.log(data.user+"available");
-                    $('#fav_'+data.user+ ' > span').removeClass('disabled').removeClass('offline').addClass('online');
+                if ('m' == data.t){
+                  if('available' == data.s){
+                    console.log(data.u+"available");
+                    $('#fav_'+data.u+ ' > span').removeClass('disabled').removeClass('offline').addClass('online');
                   }else{
-                    console.log(data.user+"unavailable");
-                    $('#fav_'+data.user+ ' > span').removeClass('online').removeClass('disabled').addClass('offline');
+                    console.log(data.u+"unavailable");
+                    $('#fav_'+data.u+ ' > span').removeClass('online').removeClass('disabled').addClass('offline');
                   }
                 }
 
@@ -62,7 +62,7 @@ $(document).ready(function () {
 });
 
 $(document).bind('connect', function (ev, data) {
-    var conn = new Strophe.Connection('http://pubsub.lab:5280/http-bind');
+    var conn = new Strophe.Connection('http://pc-mac126.thenetcircle.lab:5280/http-bind');
     conn.connect(data.jid, data.password, function (status) {
       if (status == Strophe.Status.CONNECTING) {
         console.log('Connecting...');
@@ -84,7 +84,9 @@ $(document).bind('connect', function (ev, data) {
 });
 $(document).bind('connected', function () {
     $('#disconnect').parent().removeClass('disabled');
-    MultiCast.connection.send($pres());
+    /*var presence = "invisible";*/
+    var presence = "available";
+    MultiCast.connection.send($pres().c('show', {}, presence).tree());
     MultiCast.connection.addHandler(MultiCast._onMessage, null, 'message', null, null,  null);
     MultiCast.connection.addHandler(MultiCast._onPresence, null, 'presence', null, null,  null);
 });
