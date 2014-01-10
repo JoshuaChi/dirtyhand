@@ -57,6 +57,13 @@ Muc = {
   chatDialog: null,
   connection: null,
   plugin: null,
+
+  joinChat: function(self){
+      var chartRoomName = self.attr('data-jid');
+      var myNickName = $('#myname').val();
+      var roomClient = new RoomClient(chartRoomName);
+      Muc.plugin.join(chartRoomName, myNickName, roomClient.onMessage, function(stanza, room){ roomClient.onPresence(stanza, room);Muc._listOccupants(chartRoomName);});
+  },
   _onMessage: function(msg) {
               console.log(msg);
               var elements = msg.getElementsByTagName('body');
@@ -96,17 +103,9 @@ Muc = {
 
                     var jidClassName = roomJid.toLowerCase().replace('@', '-').replace('.', '_').replace('.', '_');
 
-                    if($('ul#rooms').find(jidClassName).length < 1) {
-                    $('ul#rooms').append('<li id="'+jidClassName+'" class="room list-group-item"><a class="available btn btn-link" href="#" data-jid="'+roomJid+'">'+roomName+'</a></li>');
+                    if($('ul#rooms').find("li#"+jidClassName).length < 1) {
+                  $('ul#rooms').append('<li id="'+jidClassName+'" class="room list-group-item"><a class="available btn btn-link" href="#" onclick="Muc.joinChat($(this));return false;"data-jid="'+roomJid+'">'+roomJid+'</a></li>');
                     }
-                });
-                $('ul#rooms').find('li > .available').each(function(){
-                  $(this).bind('click', function(){
-                    var chartRoomName = $(this).attr('data-jid');
-                    var myNickName = $('#myname').val();
-                    var roomClient = new RoomClient(chartRoomName);
-                    Muc.plugin.join(chartRoomName, myNickName, function(stanza, room){ roomClient.onMessage(stanza, room); Muc._listOccupants(chartRoomName);}, roomClient.onPresence);
-                  });
                 });
            },
   _listOccupants: function(name) {
@@ -124,7 +123,7 @@ Muc = {
   },
   _initLoginName: function(name){
     $('input#myname').val(name);
-    $('span#my-name-label').text(name);
+    $('p#my-name-label').text(name);
   },
 
   _initDialogs: function(){
